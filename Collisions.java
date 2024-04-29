@@ -1,23 +1,33 @@
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
+import java.awt.event.*;
 
-public class Collisions extends JFrame {
-    
-    private JPanel panel;
-    
+public class Collisions implements ActionListener{
+    //Properties
+    JFrame theFrame = new JFrame("Collisions");
+    JPanel thePanel;
+
+    //Methods
+    public void actionPerformed(ActionEvent evt){}
+
+    //Constructor
     public Collisions() {
-        setTitle("Collisions");
-        setSize(800, 600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        panel = new JPanel();
-        add(panel);
-        
-        // Add your GUI components and event listeners here
-        
-        setVisible(true);
+        /*Leaderboard theLeaderboard = new Leaderboard("leaderboard.txt", true);
+        theLeaderboard.leaderboardEntry("Cadawas", 4);
+        theLeaderboard.leaderboardEntry("Soheil", 6);
+        theLeaderboard.close("write");
+        theLeaderboard = new Leaderboard("leaderboard.txt");
+        String[][] strLeaderboard = new String[theLeaderboard.getLength()][2];
+        strLeaderboard = theLeaderboard.getLeaderboard();
+        System.out.println(strLeaderboard[0][0] + " " + strLeaderboard[0][1]);
+        System.out.println(strLeaderboard[1][0] + " " + strLeaderboard[1][1]);
+        System.out.println(strLeaderboard[2][0] + " " + strLeaderboard[2][1]);
+        System.out.println(strLeaderboard[3][0] + " " + strLeaderboard[3][1]);*/
+
+        theFrame.setTitle("Collisions");
+        theFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
+    //Main Method
     public static void main(String[] args) {
         new Collisions();
     }
