@@ -97,7 +97,6 @@ public class Leaderboard {
             this.strLeaderboard[intLineNumber][0] = strPlayerData2[0];
             this.strLeaderboard[intLineNumber][1] = strPlayerData2[1];
         }
-        this.sortLeaderboard();
     }
 
     // Sorts the leaderboard in descending order based on scores
@@ -124,8 +123,11 @@ public class Leaderboard {
         return this.strLeaderboard;
     }
 
-    // Opens the leaderboard file for reading
-    private void openFile() {
+    // Constructors
+
+    // Constructor that opens the leaderboard file for reading
+    public Leaderboard(String strFileName) {
+        this.strFileName = strFileName;
         try {
             this.theFileReader = new FileReader(this.strFileName);
         } catch (FileNotFoundException e) {
@@ -144,14 +146,8 @@ public class Leaderboard {
         } else {
             this.blnEOF = true;
         }
-    }
-
-    // Constructors
-
-    // Constructor that opens the leaderboard file for reading
-    public Leaderboard(String strFileName) {
-        this.strFileName = strFileName;
-        this.openFile();
+        this.LoadArray();
+        this.sortLeaderboard();
     }
 
     // Constructor that opens the leaderboard file for writing
