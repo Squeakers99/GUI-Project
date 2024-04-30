@@ -25,6 +25,9 @@ public class Leaderboard {
     public String readLine() {
         String strOldLine;
         try {
+            if(this.blnEOF == true){
+                System.out.println("Attempting to read past the end of the file");
+            }
             strOldLine = this.strLine;
             this.strLine = this.theBufferedReader.readLine();
             if (this.strLine == null || this.strLine.length() == 0) {

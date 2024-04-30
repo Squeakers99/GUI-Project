@@ -4,7 +4,6 @@ import java.awt.event.*;
 public class Collisions implements ActionListener{
     //Properties
     JFrame theFrame = new JFrame("Collisions");
-    JPanel thePanel;
 
     //Methods
     public void actionPerformed(ActionEvent evt){}
@@ -19,12 +18,17 @@ public class Collisions implements ActionListener{
         String[][] strLeaderboard = new String[theLeaderboard.getLength()][2];
         strLeaderboard = theLeaderboard.getLeaderboard();
         System.out.println(strLeaderboard[0][0] + " " + strLeaderboard[0][1]);
-        System.out.println(strLeaderboard[1][0] + " " + strLeaderboard[1][1]);
-        System.out.println(strLeaderboard[2][0] + " " + strLeaderboard[2][1]);
-        System.out.println(strLeaderboard[3][0] + " " + strLeaderboard[3][1]);*/
+        System.out.println(strLeaderboard[1][0] + " " + strLeaderboard[1][1]);*/
 
         theFrame.setTitle("Collisions");
+
+        theFrame.add(new Elastic().theElasticPanel);
+        theFrame.setJMenuBar(new MenuBar().theMenuBar);
+
+        theFrame.setResizable(false);
+        theFrame.pack();
         theFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        theFrame.setVisible(true);
     }
     
     //Main Method
