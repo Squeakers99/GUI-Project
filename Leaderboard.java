@@ -42,7 +42,7 @@ public class Leaderboard {
     }
 
     // Adds an entry to the leaderboard
-    public void leaderboardEntry(String strName, int intScore) {
+    public void entry(String strName, int intScore) {
         this.thePrintWriter.println(strName + "," + intScore);
         this.thePrintWriter.flush();
         if (this.blnFileOpen == false) {
@@ -119,7 +119,6 @@ public class Leaderboard {
 
     // Returns the leaderboard data
     public String[][] getLeaderboard() {
-        this.LoadArray();
         return this.strLeaderboard;
     }
 
