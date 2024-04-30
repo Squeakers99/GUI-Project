@@ -1,9 +1,9 @@
-import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.PrintWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 // Leaderboard Object Created to manage the leaderboard
 public class Leaderboard {
@@ -18,6 +18,7 @@ public class Leaderboard {
     private FileWriter theFileWriter = null; // Used to write to a file
     private PrintWriter thePrintWriter = null; // Used to write to a file
     private int intLineCount = 0; // Stores the number of lines in the leaderboard file
+    private String strFileData = ""; // Stores the file data
 
     // Methods
 
@@ -42,8 +43,7 @@ public class Leaderboard {
 
     // Adds an entry to the leaderboard
     public void leaderboardEntry(String strName, int intScore) {
-        this.thePrintWriter.println(strName);
-        this.thePrintWriter.println(intScore);
+        this.thePrintWriter.println(strName + "," + intScore);
         this.thePrintWriter.flush();
         if (this.blnFileOpen == false) {
             System.out.println("Attempted to write to a file that is already closed");
@@ -71,17 +71,13 @@ public class Leaderboard {
         }
     }
 
-    // Calculates the length of the leaderboard file
-    public void leaderboardLength() {
+    // Calculates the length of the leaderboard file and loads its data into an array
+    public void leaderboardDataLoading() {
         while (this.blnEOF == false) {
             intLineCount++;
-            this.readLine();
+            this.strFileData += this.readLine() + ";";
         }
-
         this.close("read");
-        this.openFile();
-
-        intLineCount /= 2;
     }
 
     // Returns the length of the leaderboard
@@ -91,11 +87,15 @@ public class Leaderboard {
 
     // Loads the leaderboard data into the strLeaderboard array
     public void LoadArray() {
-        this.leaderboardLength();
+        this.leaderboardDataLoading();
         strLeaderboard = new String[intLineCount][2];
+        String[] strPlayerData = new String[intLineCount];
+        String[] strPlayerData2 = new String[2];
+        strPlayerData = this.strFileData.split(";");
         for (int intLineNumber = 0; intLineNumber < intLineCount; intLineNumber++) {
-            this.strLeaderboard[intLineNumber][0] = this.readLine();
-            this.strLeaderboard[intLineNumber][1] = this.readLine();
+            strPlayerData2 = strPlayerData[intLineNumber].split(",");
+            this.strLeaderboard[intLineNumber][0] = strPlayerData2[0];
+            this.strLeaderboard[intLineNumber][1] = strPlayerData2[1];
         }
         this.sortLeaderboard();
     }
@@ -104,15 +104,15 @@ public class Leaderboard {
     public void sortLeaderboard() {
         String strTempName;
         String strTempScore;
-        for (int intOuter = 0; intOuter < this.strLeaderboard.length; intOuter++) {
-            for (int intInner = 0; intInner < this.strLeaderboard.length; intInner++) {
-                if (Integer.parseInt(this.strLeaderboard[intOuter][1]) > Integer.parseInt(this.strLeaderboard[intInner][1])) {
-                    strTempName = this.strLeaderboard[intOuter][0];
-                    strTempScore = this.strLeaderboard[intOuter][1];
-                    this.strLeaderboard[intOuter][0] = this.strLeaderboard[intInner][0];
-                    this.strLeaderboard[intOuter][1] = this.strLeaderboard[intInner][1];
-                    this.strLeaderboard[intInner][0] = strTempName;
-                    this.strLeaderboard[intInner][1] = strTempScore;
+        for (String[] leaderboardEntry : this.strLeaderboard) {
+            for (String[] innerEntry : this.strLeaderboard) {
+                if (Integer.parseInt(leaderboardEntry[1]) > Integer.parseInt(innerEntry[1])) {
+                    strTempName = leaderboardEntry[0];
+                    strTempScore = leaderboardEntry[1];
+                    leaderboardEntry[0] = innerEntry[0];
+                    leaderboardEntry[1] = innerEntry[1];
+                    innerEntry[0] = strTempName;
+                    innerEntry[1] = strTempScore;
                 }
             }
         }

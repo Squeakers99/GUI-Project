@@ -1,5 +1,5 @@
-import javax.swing.*;
 import java.awt.event.*;
+import javax.swing.*;
 
 public class Collisions implements ActionListener{
     //Properties
@@ -10,16 +10,6 @@ public class Collisions implements ActionListener{
 
     //Constructor
     public Collisions() {
-        /*Leaderboard theLeaderboard = new Leaderboard("leaderboard.txt", true);
-        theLeaderboard.leaderboardEntry("Cadawas", 4);
-        theLeaderboard.leaderboardEntry("Soheil", 6);
-        theLeaderboard.close("write");
-        theLeaderboard = new Leaderboard("leaderboard.txt");
-        String[][] strLeaderboard = new String[theLeaderboard.getLength()][2];
-        strLeaderboard = theLeaderboard.getLeaderboard();
-        System.out.println(strLeaderboard[0][0] + " " + strLeaderboard[0][1]);
-        System.out.println(strLeaderboard[1][0] + " " + strLeaderboard[1][1]);*/
-
         theFrame.setTitle("Collisions");
 
         theFrame.add(new Elastic().theElasticPanel);
