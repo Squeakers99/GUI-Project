@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 // Leaderboard Object Created to manage the leaderboard
-public class Leaderboard {
+public class LeaderboardClass {
     //------------------PROPERTIES------------------
     private BufferedReader theBufferedReader = null; // Used to read from a file
     private String strLeaderboard[][] = null; // Stores the leaderboard data
@@ -125,7 +125,7 @@ public class Leaderboard {
     //------------------CONSTRUCTORS------------------
 
     // Opens the leaderboard file for reading
-    public Leaderboard(String strFileName) {
+    public LeaderboardClass(String strFileName) {
         this.strFileName = strFileName;
         try {
             this.theFileReader = new FileReader(this.strFileName);
@@ -150,7 +150,7 @@ public class Leaderboard {
     }
 
     // Opens the leaderboard file for writing
-    public Leaderboard(String strFileName, boolean blnAppend) {
+    public LeaderboardClass(String strFileName, boolean blnAppend) {
         try {
             this.theFileWriter = new FileWriter(strFileName, blnAppend);
         } catch (IOException e) {

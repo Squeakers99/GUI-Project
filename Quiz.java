@@ -1,7 +1,7 @@
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.*;
-import javax.swing.event.*;
+import javax.swing.*;
 
 public class Quiz implements ActionListener{
 
@@ -13,7 +13,10 @@ public class Quiz implements ActionListener{
     }
     //Constructor
     public Quiz(){
-        new Quiz();
+        //Sets up the panel
+        thePanel.setLayout(null);
+        thePanel.setPreferredSize(new Dimension(960, 540));
+        thePanel.setBackground(Color.black);
     }
     
 }

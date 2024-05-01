@@ -8,14 +8,16 @@ public class Collisions implements ActionListener{
     JFrame theFrame = new JFrame("Collisions");
     Elastic theElasticSimulationPanel = new Elastic();
     Inelastic theInelasticSimulationPanel = new Inelastic();
+    Quiz theQuizPanel = new Quiz();
+    LeaderboardScreen theLeaderboardPanel = new LeaderboardScreen();
 
     //Menu Items
     JMenuBar theMenuBar = new JMenuBar();
     JMenu theFileMenu = new JMenu("File");    
     JMenuItem theElasticSimulation = new JMenuItem("Elastic Simulation");
     JMenuItem theInelasticSimulation = new JMenuItem("Inelastic Simulation");
-    JMenu theQuiz = new JMenu("Quiz");
-    JMenu theLeaderboard = new JMenu("Leaderboard");
+    JMenuItem theQuiz = new JMenuItem("Quiz");
+    JMenuItem theLeaderboard = new JMenuItem("Leaderboard");
 
     //------------------METHODS------------------
     @Override
@@ -25,9 +27,10 @@ public class Collisions implements ActionListener{
         }else if(evt.getSource() == theInelasticSimulation){
             theFrame.setContentPane(theInelasticSimulationPanel.thePanel);
         }else if(evt.getSource() == theQuiz){
-            //theFrame.setContentPane(theQuizPanel.thePanel);
+            System.out.println("Quiz");
+            theFrame.setContentPane(theQuizPanel.thePanel);
         }else if(evt.getSource() == theLeaderboard){
-            //theFrame.setContentPane(theLeaderboardPanel.thePanel);
+            theFrame.setContentPane(theLeaderboardPanel.thePanel);
         }
         theFrame.pack();
     }
