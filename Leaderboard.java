@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 
 // Leaderboard Object Created to manage the leaderboard
 public class Leaderboard {
-    // Properties
+    //------------------PROPERTIES------------------
     private BufferedReader theBufferedReader = null; // Used to read from a file
     private String strLeaderboard[][] = null; // Stores the leaderboard data
     private String strFileName = null; // File name of the leaderboard file
@@ -20,7 +20,7 @@ public class Leaderboard {
     private int intLineCount = 0; // Stores the number of lines in the leaderboard file
     private String strFileData = ""; // Stores the file data
 
-    // Methods
+    //------------------METHODS------------------
 
     // Reads a line from the file
     public String readLine() {
@@ -122,9 +122,9 @@ public class Leaderboard {
         return this.strLeaderboard;
     }
 
-    // Constructors
+    //------------------CONSTRUCTORS------------------
 
-    // Constructor that opens the leaderboard file for reading
+    // Opens the leaderboard file for reading
     public Leaderboard(String strFileName) {
         this.strFileName = strFileName;
         try {
@@ -149,7 +149,7 @@ public class Leaderboard {
         this.sortLeaderboard();
     }
 
-    // Constructor that opens the leaderboard file for writing
+    // Opens the leaderboard file for writing
     public Leaderboard(String strFileName, boolean blnAppend) {
         try {
             this.theFileWriter = new FileWriter(strFileName, blnAppend);

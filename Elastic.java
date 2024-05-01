@@ -1,9 +1,11 @@
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
 import javax.swing.event.*;
 
 public class Elastic implements ActionListener, ChangeListener {
+    //------------------PROPERTIES------------------
+
     // JPanel Definition
     JPanel thePanel = new JPanel();
     
@@ -59,7 +61,9 @@ public class Elastic implements ActionListener, ChangeListener {
     double dblP1Final;
     double dblP2Final;
 
-    // Methods
+    //------------------METHODS------------------
+
+    //Mandatory override to read component states
     @Override
     public void actionPerformed(ActionEvent evt) {
         if(evt.getSource() == theM1Field){
@@ -121,6 +125,7 @@ public class Elastic implements ActionListener, ChangeListener {
         this.calculations();
     }
 
+    //Mandatory override to read slider state
     @Override
     public void stateChanged(ChangeEvent evt) {
         if (evt.getSource() == theM1Slider) {
@@ -170,6 +175,12 @@ public class Elastic implements ActionListener, ChangeListener {
         dblP1Initial = dblV1Initial * dblM1;
         dblP2Initial = dblV2Initial * dblM2;
 
+        //Draws the labels
+        drawLabels();
+    }
+
+    //Method to draw the labels
+    public void drawLabels(){
         //Rounds all to 1 Decimal Place
         dblV1Final = Math.round(dblV1Final * 10.0) / 10.0;
         dblV2Final = Math.round(dblV2Final * 10.0) / 10.0;
@@ -218,6 +229,7 @@ public class Elastic implements ActionListener, ChangeListener {
         thePanel.add(theP2InitialLabel);
     }
 
+    //------------------CONSTRUCTOR------------------
     public Elastic() {
         // Panel Properties
         thePanel.setPreferredSize(new Dimension(960, 540));
