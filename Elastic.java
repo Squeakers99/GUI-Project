@@ -5,7 +5,7 @@ import javax.swing.event.*;
 
 public class Elastic implements ActionListener, ChangeListener {
     // JPanel Definition
-    JPanel theElasticPanel = new JPanel();
+    JPanel thePanel = new JPanel();
     
     // Font Definitions
     Font fntDialog20 = new Font("Dialog", 1, 20);
@@ -190,50 +190,50 @@ public class Elastic implements ActionListener, ChangeListener {
         theV1FinalLabel.setBounds(5, 430, 110, 30);
         theV1FinalLabel.setFont(fntDialog13);
         theV1FinalLabel.setForeground(Color.white);
-        theElasticPanel.add(theV1FinalLabel);
+        thePanel.add(theV1FinalLabel);
 
         theV2FinalLabel.setBounds(5, 460, 110, 30);
         theV2FinalLabel.setFont(fntDialog13);
         theV2FinalLabel.setForeground(Color.white);
-        theElasticPanel.add(theV2FinalLabel);
+        thePanel.add(theV2FinalLabel);
 
         theP1FinalLabel.setBounds(120, 430, 110, 30);
         theP1FinalLabel.setFont(fntDialog13);
         theP1FinalLabel.setForeground(Color.white);
-        theElasticPanel.add(theP1FinalLabel);
+        thePanel.add(theP1FinalLabel);
 
         theP2FinalLabel.setBounds(120, 460, 110, 30);
         theP2FinalLabel.setFont(fntDialog13);
         theP2FinalLabel.setForeground(Color.white);
-        theElasticPanel.add(theP2FinalLabel);
+        thePanel.add(theP2FinalLabel);
 
         theP1InitialLabel.setBounds(5, 490, 100, 30);
         theP1InitialLabel.setFont(fntDialog13);
         theP1InitialLabel.setForeground(Color.white);
-        theElasticPanel.add(theP1InitialLabel);
+        thePanel.add(theP1InitialLabel);
 
         theP2InitialLabel.setBounds(120, 490, 100, 30);
         theP2InitialLabel.setFont(fntDialog13);
         theP2InitialLabel.setForeground(Color.white);
-        theElasticPanel.add(theP2InitialLabel);
+        thePanel.add(theP2InitialLabel);
     }
 
     public Elastic() {
         // Panel Properties
-        theElasticPanel.setPreferredSize(new Dimension(960, 540));
-        theElasticPanel.setLayout(null);
-        theElasticPanel.setBackground(Color.black);
+        thePanel.setPreferredSize(new Dimension(960, 540));
+        thePanel.setLayout(null);
+        thePanel.setBackground(Color.black);
 
         // Main Divider Properties
         theMainDivider.setBounds(240, 0, 10, 540);
         theMainDivider.setForeground(Color.white);
-        theElasticPanel.add(theMainDivider);
+        thePanel.add(theMainDivider);
 
         // Label for Mass 1
         theM1Label.setBounds(70, 10, 80, 20);
         theM1Label.setFont(fntDialog20);
         theM1Label.setForeground(Color.white);
-        theElasticPanel.add(theM1Field);
+        thePanel.add(theM1Field);
 
         // Text Field for Mass 1
         theM1Field.setBounds(150, 10, 50, 20);
@@ -241,7 +241,7 @@ public class Elastic implements ActionListener, ChangeListener {
         theM1Field.setBorder(null);
         theM1Field.setFont(fntDialog20);
         theM1Field.setForeground(Color.white);
-        theElasticPanel.add(theM1Label);
+        thePanel.add(theM1Label);
 
         // Slider for Mass 1
         theM1Slider.setBounds(20, 40, 200, 50);
@@ -251,13 +251,13 @@ public class Elastic implements ActionListener, ChangeListener {
         theM1Slider.setOpaque(false);
         theM1Slider.setMajorTickSpacing(10);
         theM1Slider.setMinorTickSpacing(5);
-        theElasticPanel.add(theM1Slider);
+        thePanel.add(theM1Slider);
 
         // Label for Mass 2
         theM2Label.setBounds(70, 105, 80, 20);
         theM2Label.setFont(fntDialog20);
         theM2Label.setForeground(Color.white);
-        theElasticPanel.add(theM2Label);
+        thePanel.add(theM2Label);
 
         // Text Field for Mass 2
         theM2Field.setBounds(150, 105, 50, 20);
@@ -265,7 +265,7 @@ public class Elastic implements ActionListener, ChangeListener {
         theM2Field.setBorder(null);
         theM2Field.setFont(fntDialog20);
         theM2Field.setForeground(Color.white);
-        theElasticPanel.add(theM2Field);
+        thePanel.add(theM2Field);
 
         // Slider for Mass 2
         theM2Slider.setBounds(20, 135, 200, 50);
@@ -275,29 +275,29 @@ public class Elastic implements ActionListener, ChangeListener {
         theM2Slider.setOpaque(false);
         theM2Slider.setMajorTickSpacing(10);
         theM2Slider.setMinorTickSpacing(5);
-        theElasticPanel.add(theM2Slider);
+        thePanel.add(theM2Slider);
 
         // Divider between Mass and Velocities
         theMassAndVelocitiesDivider.setBounds(0, 200, 240, 5);
         theMassAndVelocitiesDivider.setForeground(Color.white);
-        theElasticPanel.add(theMassAndVelocitiesDivider);
+        thePanel.add(theMassAndVelocitiesDivider);
 
         // Label for Checkbox Instructions
         theCheckboxInstructions.setBounds(1, 200, 220, 50);
         theCheckboxInstructions.setFont(fntDialog10);
         theCheckboxInstructions.setForeground(Color.white);
-        theElasticPanel.add(theCheckboxInstructions);
+        thePanel.add(theCheckboxInstructions);
 
         // Checkbox
         theCheckbox.setBounds(215, 215, 20, 20);
         theCheckbox.setOpaque(false);
-        theElasticPanel.add(theCheckbox);
+        thePanel.add(theCheckbox);
 
         // Mass 1 Initial V Label
         theV1InitialLabel.setBounds(1, 240, 220, 30);
         theV1InitialLabel.setFont(fntDialog15);
         theV1InitialLabel.setForeground(Color.white);
-        theElasticPanel.add(theV1InitialLabel);
+        thePanel.add(theV1InitialLabel);
 
         // Mass 1 Initial V Field
         theV1InitialField.setBounds(170, 240, 50, 30);
@@ -305,7 +305,7 @@ public class Elastic implements ActionListener, ChangeListener {
         theV1InitialField.setBorder(null);
         theV1InitialField.setFont(fntDialog15);
         theV1InitialField.setForeground(Color.white);
-        theElasticPanel.add(theV1InitialField);
+        thePanel.add(theV1InitialField);
 
         // Mass 1 Initial V Slider
         theV1InitialSlider.setBounds(20, 270, 200, 50);
@@ -315,13 +315,13 @@ public class Elastic implements ActionListener, ChangeListener {
         theV1InitialSlider.setOpaque(false);
         theV1InitialSlider.setMajorTickSpacing(50);
         theV1InitialSlider.setMinorTickSpacing(10);
-        theElasticPanel.add(theV1InitialSlider);
+        thePanel.add(theV1InitialSlider);
 
         // Mass 2 Initial V Label
         theV2InitialLabel.setBounds(1, 325, 220, 30);
         theV2InitialLabel.setFont(fntDialog15);
         theV2InitialLabel.setForeground(Color.white);
-        theElasticPanel.add(theV2InitialLabel);
+        thePanel.add(theV2InitialLabel);
 
         // Mass 2 Initial V Field
         theV2InitialField.setBounds(170, 325, 50, 30);
@@ -330,7 +330,7 @@ public class Elastic implements ActionListener, ChangeListener {
         theV2InitialField.setFont(fntDialog15);
         theV2InitialField.setForeground(Color.white);
         theV2InitialField.setEnabled(false);
-        theElasticPanel.add(theV2InitialField);
+        thePanel.add(theV2InitialField);
 
         // Mass 2 Initial V Slider
         theV2InitialSlider.setBounds(20, 355, 200, 50);
@@ -341,12 +341,12 @@ public class Elastic implements ActionListener, ChangeListener {
         theV2InitialSlider.setMajorTickSpacing(50);
         theV2InitialSlider.setMinorTickSpacing(10);
         theV2InitialSlider.setEnabled(false);
-        theElasticPanel.add(theV2InitialSlider);
+        thePanel.add(theV2InitialSlider);
 
         // Divider between V inputs and calculations
         theVelocitiesDivider.setBounds(0, 420, 240, 5);
         theVelocitiesDivider.setForeground(Color.white);
-        theElasticPanel.add(theVelocitiesDivider);
+        thePanel.add(theVelocitiesDivider);
 
         // Runs Calculations to display the calculations
         this.calculations();
