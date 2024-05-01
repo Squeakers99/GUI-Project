@@ -13,7 +13,7 @@ public class Collisions implements ActionListener{
     public Collisions() {
         theFrame.setTitle("Collisions");
 
-        theFrame.add(new Inelastic().thePanel);
+        theFrame.add(new Quiz().thePanel);
         theFrame.setJMenuBar(new MenuBar().theMenuBar);
 
         theFrame.setResizable(false);

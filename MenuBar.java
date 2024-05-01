@@ -1,6 +1,8 @@
 import javax.swing.*;
+import java.awt.event.*;
 
 public class MenuBar{
+    //Properties
     JMenuBar theMenuBar = new JMenuBar();
     JMenu theSimulationsMenu = new JMenu("Simulations");    
     JMenuItem theElasticSimulation = new JMenuItem("Elastic Simulation");
@@ -8,6 +10,9 @@ public class MenuBar{
     JMenu theQuiz = new JMenu("Quiz");
     JMenu theLeaderboard = new JMenu("Leaderboard");
 
+    // Methods
+
+    // Constuctor
     public MenuBar() {
         theSimulationsMenu.add(theElasticSimulation);
         theSimulationsMenu.add(theInelasticSimulation);
