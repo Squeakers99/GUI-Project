@@ -9,10 +9,10 @@ public class MenuBar{
     JMenu theLeaderboard = new JMenu("Leaderboard");
 
     public MenuBar() {
-        this.theSimulationsMenu.add(this.theElasticSimulation);
-        this.theSimulationsMenu.add(this.theInelasticSimulation);
-        this.theMenuBar.add(this.theSimulationsMenu);
-        this.theMenuBar.add(this.theQuiz);
-        this.theMenuBar.add(this.theLeaderboard);
+        theSimulationsMenu.add(theElasticSimulation);
+        theSimulationsMenu.add(theInelasticSimulation);
+        theMenuBar.add(theSimulationsMenu);
+        theMenuBar.add(theQuiz);
+        theMenuBar.add(theLeaderboard);
     }
 }

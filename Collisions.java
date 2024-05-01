@@ -6,6 +6,7 @@ public class Collisions implements ActionListener{
     JFrame theFrame = new JFrame("Collisions");
 
     //Methods
+    @Override
     public void actionPerformed(ActionEvent evt){}
 
     //Constructor
