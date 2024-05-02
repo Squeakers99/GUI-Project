@@ -7,7 +7,7 @@ public class AnimationPanel extends JPanel {
     //Variables for the balls
     int intM1X = 300;
     int intM1Size = 50;
-    int intM2X = 600;
+    int intM2X = 450;
     int intM2Size = 50;
  
     //------------------METHODS------------------

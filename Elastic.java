@@ -153,7 +153,7 @@ public class Elastic implements ActionListener, ChangeListener {
             }
         }else if(evt.getSource() == theResetButton){
             thePanel.intM1X = 300;
-            thePanel.intM2X = 600;
+            thePanel.intM2X = 450;
             simulationSetup();
             blnCollided = false;
             theM1Field.setEnabled(true);
