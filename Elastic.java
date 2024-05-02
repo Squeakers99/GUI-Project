@@ -6,8 +6,8 @@ import javax.swing.event.*;
 public class Elastic implements ActionListener, ChangeListener {
     //------------------PROPERTIES------------------
 
-    // JPanel Definition
-    JPanel thePanel = new JPanel();
+    // Panel Creation
+    AnimationPanel thePanel = new AnimationPanel();
     
     // Font Definitions
     Font fntDialog20 = new Font("Dialog", 1, 20);
@@ -34,22 +34,30 @@ public class Elastic implements ActionListener, ChangeListener {
     JLabel theP2InitialLabel = new JLabel("M2 Init P: 0", JLabel.CENTER);
 
     // Input Fields
-    JTextField theM1Field = new JTextField("1");
-    JTextField theM2Field = new JTextField("1");
+    JTextField theM1Field = new JTextField("50");
+    JTextField theM2Field = new JTextField("50");
     JTextField theV1InitialField = new JTextField("0");
     JTextField theV2InitialField = new JTextField("0");
 
     // Sliders
-    JSlider theM1Slider = new JSlider(0, 100, 1);
-    JSlider theM2Slider = new JSlider(0, 100, 1);
-    JSlider theV1InitialSlider = new JSlider(-100, 100, 0);
-    JSlider theV2InitialSlider = new JSlider(-100, 100, 0);
+    JSlider theM1Slider = new JSlider(0, 100, 50);
+    JSlider theM2Slider = new JSlider(0, 100, 50);
+    JSlider theV1InitialSlider = new JSlider(0, 10, 0);
+    JSlider theV2InitialSlider = new JSlider(-10, 10, 0);
 
     //Checkbox
     JRadioButton theCheckbox = new JRadioButton();
 
-    // Variables
-    boolean blnMass2V = false;
+    //Buttons
+    JButton theRunButton = new JButton("Run Simulation");
+    JButton theResetButton = new JButton("Reset Simulation");
+
+    //Timer
+    Timer theTimer = new Timer(1000/48, this);
+
+    // Variables - Calculations
+    boolean blnM2V = false;
+    boolean blnCollided = false;
     double dblM1 = 1.0;
     double dblM2 = 1.0;
     double dblV1Initial = 0.0;
@@ -76,9 +84,11 @@ public class Elastic implements ActionListener, ChangeListener {
                     theM1Field.setText(Integer.toString(theM1Slider.getValue()));
                 }
             } catch (NumberFormatException e) {
-                theM1Slider.setValue(1);
-                theM1Field.setText("1");
+                theM1Slider.setValue(50);
+                theM1Field.setText("50");
             }
+            this.calculations();
+            this.simulationSetup();
         } else if (evt.getSource() == theM2Field) {
             try {
                 if (Integer.parseInt(theM2Field.getText()) < 1) {
@@ -89,9 +99,11 @@ public class Elastic implements ActionListener, ChangeListener {
                     theM2Field.setText(Integer.toString(theM2Slider.getValue()));
                 }
             } catch (NumberFormatException e) {
-                theM2Slider.setValue(1);
-                theM2Field.setText("1");
+                theM2Slider.setValue(50);
+                theM2Field.setText("50");
             }
+            this.calculations();
+            this.simulationSetup();
         }else if(evt.getSource() == theV1InitialField){
             try {
                 theV1InitialSlider.setValue(Integer.parseInt(theV1InitialField.getText()));
@@ -101,6 +113,7 @@ public class Elastic implements ActionListener, ChangeListener {
                 theV1InitialSlider.setValue(0);
                 theV1InitialField.setText("0");
             }
+            this.calculations();
         }else if(evt.getSource() == theV2InitialField){
             try {
                 theV2InitialSlider.setValue(Integer.parseInt(theV2InitialField.getText()));
@@ -110,9 +123,10 @@ public class Elastic implements ActionListener, ChangeListener {
                 theV2InitialSlider.setValue(0);
                 theV2InitialField.setText("0");
             }
+            this.calculations();
         }else if(evt.getSource() == theCheckbox){
-            blnMass2V = !blnMass2V;
-            if(blnMass2V){
+            blnM2V = !blnM2V;
+            if(blnM2V){
                 theV2InitialField.setEnabled(true);
                 theV2InitialSlider.setEnabled(true);
             }else{
@@ -121,8 +135,42 @@ public class Elastic implements ActionListener, ChangeListener {
                 theV2InitialField.setText("0");
                 theV2InitialSlider.setValue(0);
             }
+        }else if(evt.getSource() == theRunButton){
+            if(dblV1Initial <= dblV2Initial){
+                JOptionPane.showMessageDialog(null, "Collision Invalid. \nInitial velocity of mass 2 cannot be greater than or equal to the initial velocity of mass 1", "Error", JOptionPane.ERROR_MESSAGE);
+            }else{
+                theM1Field.setEnabled(false);
+                theM2Field.setEnabled(false);
+                theV1InitialField.setEnabled(false);
+                theV2InitialField.setEnabled(false);
+                theM1Slider.setEnabled(false);
+                theM2Slider.setEnabled(false);
+                theV1InitialSlider.setEnabled(false);
+                theV2InitialSlider.setEnabled(false);
+                theCheckbox.setEnabled(false);
+                theRunButton.setEnabled(false);
+                theTimer.start();
+            }
+        }else if(evt.getSource() == theResetButton){
+            thePanel.intM1X = 300;
+            thePanel.intM2X = 600;
+            simulationSetup();
+            blnCollided = false;
+            theM1Field.setEnabled(true);
+            theM2Field.setEnabled(true);
+            theV1InitialField.setEnabled(true);
+            theV2InitialField.setEnabled(true);
+            theM1Slider.setEnabled(true);
+            theM2Slider.setEnabled(true);
+            theV1InitialSlider.setEnabled(true);
+            theV2InitialSlider.setEnabled(true);
+            theCheckbox.setEnabled(true);
+            theRunButton.setEnabled(true);
+            theResetButton.setEnabled(true);
+            theTimer.stop();
+        }else if(evt.getSource() == theTimer){
+            simulationRun();
         }
-        this.calculations();
     }
 
     //Mandatory override to read slider state
@@ -148,6 +196,7 @@ public class Elastic implements ActionListener, ChangeListener {
             theV2InitialField.setText(Integer.toString(theV2InitialSlider.getValue()));
         }
         this.calculations();
+        simulationSetup();
     }
 
     //Method to perform calculations and display them
@@ -168,6 +217,10 @@ public class Elastic implements ActionListener, ChangeListener {
             dblV1Final = dblV1Final + dblV2Initial;
             dblV2Final = dblV2Final + dblV2Initial;
         }
+
+        //Resetting V1 and V2 after Relative Velocity Calculations
+        dblV1Initial = Double.valueOf(theV1InitialSlider.getValue());
+        dblV2Initial = Double.valueOf(theV2InitialSlider.getValue());
 
         //Calculating Momentums
         dblP1Final = dblM1 * dblV1Final;
@@ -229,6 +282,34 @@ public class Elastic implements ActionListener, ChangeListener {
         thePanel.add(theP2InitialLabel);
     }
 
+    //Method to setup the simulation
+    public void simulationSetup(){
+        thePanel.intM1Size = (int)dblM1;
+        thePanel.intM2Size = (int)dblM2;
+        thePanel.repaint();
+    }
+
+    //Method to run the simulation
+    public void simulationRun(){
+        if(blnCollided == false){
+            thePanel.intM1X += (int)dblV1Initial;
+            thePanel.intM2X += (int)dblV2Initial;
+        }else{
+            thePanel.intM1X += (int)dblV1Final;
+            thePanel.intM2X += (int)dblV2Final;
+        }
+        if(thePanel.intM1X+thePanel.intM1Size >= thePanel.intM2X){
+            blnCollided = true;
+        }
+
+        //Puts M1 out of the screen if it gets on the configuration side of the panel
+        if(thePanel.intM1X <= 240){
+            thePanel.intM1X = 0 - thePanel.intM1Size;
+        }
+        
+        thePanel.repaint();
+    }
+
     //------------------CONSTRUCTOR------------------
     public Elastic() {
         // Panel Properties
@@ -263,6 +344,7 @@ public class Elastic implements ActionListener, ChangeListener {
         theM1Slider.setOpaque(false);
         theM1Slider.setMajorTickSpacing(10);
         theM1Slider.setMinorTickSpacing(5);
+        theM1Slider.setSnapToTicks(true);
         thePanel.add(theM1Slider);
 
         // Label for Mass 2
@@ -287,6 +369,7 @@ public class Elastic implements ActionListener, ChangeListener {
         theM2Slider.setOpaque(false);
         theM2Slider.setMajorTickSpacing(10);
         theM2Slider.setMinorTickSpacing(5);
+        theM2Slider.setSnapToTicks(true);
         thePanel.add(theM2Slider);
 
         // Divider between Mass and Velocities
@@ -325,8 +408,9 @@ public class Elastic implements ActionListener, ChangeListener {
         theV1InitialSlider.setPaintTicks(true);
         theV1InitialSlider.setPaintLabels(true);
         theV1InitialSlider.setOpaque(false);
-        theV1InitialSlider.setMajorTickSpacing(50);
-        theV1InitialSlider.setMinorTickSpacing(10);
+        theV1InitialSlider.setMajorTickSpacing(2);
+        theV1InitialSlider.setMinorTickSpacing(1);
+        theV1InitialSlider.setSnapToTicks(true);
         thePanel.add(theV1InitialSlider);
 
         // Mass 2 Initial V Label
@@ -350,9 +434,10 @@ public class Elastic implements ActionListener, ChangeListener {
         theV2InitialSlider.setPaintTicks(true);
         theV2InitialSlider.setPaintLabels(true);
         theV2InitialSlider.setOpaque(false);
-        theV2InitialSlider.setMajorTickSpacing(50);
-        theV2InitialSlider.setMinorTickSpacing(10);
+        theV2InitialSlider.setMajorTickSpacing(2);
+        theV2InitialSlider.setMinorTickSpacing(1);
         theV2InitialSlider.setEnabled(false);
+        theV2InitialSlider.setSnapToTicks(true);
         thePanel.add(theV2InitialSlider);
 
         // Divider between V inputs and calculations
@@ -360,8 +445,27 @@ public class Elastic implements ActionListener, ChangeListener {
         theVelocitiesDivider.setForeground(Color.white);
         thePanel.add(theVelocitiesDivider);
 
-        // Runs Calculations to display the calculations
+        // Run Button for Simulation
+        theRunButton.setBounds(260, 20, 200, 30);
+        theRunButton.setFont(fntDialog15);
+        theRunButton.setForeground(Color.white);
+        theRunButton.setBackground(Color.black);
+        theRunButton.setBorder(BorderFactory.createLineBorder(Color.white));
+        thePanel.add(theRunButton);
+
+        // Reset Button for Simulation
+        theResetButton.setBounds(740, 20, 200, 30);
+        theResetButton.setFont(fntDialog15);
+        theResetButton.setForeground(Color.white);
+        theResetButton.setBackground(Color.black);
+        theResetButton.setBorder(BorderFactory.createLineBorder(Color.white));
+        thePanel.add(theResetButton);
+
+        // Runs Calculations
         this.calculations();
+
+        //Sets up the Simulation
+        simulationSetup();
 
         // All Listeners
         theM1Field.addActionListener(this);
@@ -373,5 +477,8 @@ public class Elastic implements ActionListener, ChangeListener {
         theV1InitialSlider.addChangeListener(this);
         theV2InitialField.addActionListener(this);
         theV2InitialSlider.addChangeListener(this);
+        theRunButton.addActionListener(this);
+        theResetButton.addActionListener(this);
+        theTimer.addActionListener(this);
     }
 }
