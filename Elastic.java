@@ -295,8 +295,21 @@ public class Elastic implements ActionListener, ChangeListener {
             thePanel.intM1X += (int)dblV1Initial;
             thePanel.intM2X += (int)dblV2Initial;
         }else{
-            thePanel.intM1X += (int)dblV1Final;
-            thePanel.intM2X += (int)dblV2Final;
+            if(dblV1Final < 1.0 && dblV1Final > 0.0){
+                thePanel.intM1X += 1;
+            }else if(dblV1Final > -1.0 && dblV1Final < 0.0){
+                thePanel.intM1X -= 1;
+            }else{
+                thePanel.intM1X += (int)dblV1Final;
+            }
+
+            if(dblV2Final < 1.0 && dblV2Final > 0.0){
+                thePanel.intM2X += 1;
+            }else if (dblV2Final > -1.0 && dblV2Final < 0.0){
+                thePanel.intM2X -= 1;
+            }else{
+                thePanel.intM2X += (int)dblV2Final;
+            }
         }
         if(thePanel.intM1X+thePanel.intM1Size >= thePanel.intM2X){
             blnCollided = true;
