@@ -13,7 +13,8 @@ public class Collisions implements ActionListener{
 
     //Menu Items
     JMenuBar theMenuBar = new JMenuBar();
-    JMenu theFileMenu = new JMenu("File");    
+    JMenu theFileMenu = new JMenu("File");
+    JMenu theEvaluationsMenu = new JMenu("Evaluations");
     JMenuItem theElasticSimulation = new JMenuItem("Elastic Simulation");
     JMenuItem theInelasticSimulation = new JMenuItem("Inelastic Simulation");
     JMenuItem theQuiz = new JMenuItem("Quiz");
@@ -28,7 +29,7 @@ public class Collisions implements ActionListener{
             theFrame.setContentPane(theInelasticSimulationPanel.thePanel);
         }else if(evt.getSource() == theQuiz){
             System.out.println("Quiz");
-            theFrame.setContentPane(theQuizPanel.thePanel);
+            theFrame.setContentPane(theQuizPanel.theScroll);
         }else if(evt.getSource() == theLeaderboard){
             theFrame.setContentPane(theLeaderboardPanel.thePanel);
         }
@@ -44,9 +45,10 @@ public class Collisions implements ActionListener{
         // Gets the Menu ready
         theFileMenu.add(theElasticSimulation);
         theFileMenu.add(theInelasticSimulation);
+        theEvaluationsMenu.add(theQuiz);
+        theEvaluationsMenu.add(theLeaderboard);
+        theMenuBar.add(theEvaluationsMenu);
         theMenuBar.add(theFileMenu);
-        theMenuBar.add(theQuiz);
-        theMenuBar.add(theLeaderboard);
         theFrame.setJMenuBar(theMenuBar);
 
         //Adds action listeners
