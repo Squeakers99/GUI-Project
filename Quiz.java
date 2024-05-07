@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -11,6 +12,8 @@ public class Quiz implements ActionListener{
     JRadioButton[] theAnswers = new JRadioButton[15];
     int intQuestionNumber = 0;
 
+    Font fntDialog15 = new Font("Dialog", 1, 15);
+
     JScrollPane theScroll = new JScrollPane(thePanel);
 
     // Methods
@@ -20,17 +23,19 @@ public class Quiz implements ActionListener{
     }
     
     //Completes all the functionality to set up a question
-    public void setQuestion(String strQuestion, int intQuestionY){
+    public final void setQuestion(String strQuestion, int intQuestionY){
         //Sets up the question
         theQuestion[intQuestionNumber] = new JLabel(strQuestion);
-        theQuestion[intQuestionNumber].setBounds(10, intQuestionY, 940, 30);
+        theQuestion[intQuestionNumber].setFont(fntDialog15);
+        theQuestion[intQuestionNumber].setBounds(40, intQuestionY, 940, 30);
         theQuestion[intQuestionNumber].setForeground(Color.white);
         thePanel.add(theQuestion[intQuestionNumber]);
 
         //Sets up the button
         theAnswers[intQuestionNumber] = new JRadioButton();
-        theAnswers[intQuestionNumber].setBounds(10, intQuestionY, 20, 20);
+        theAnswers[intQuestionNumber].setBounds(10, intQuestionY-2, 35, 35);
         theAnswers[intQuestionNumber].setForeground(Color.white);
+        theAnswers[intQuestionNumber].setOpaque(false);
         thePanel.add(theAnswers[intQuestionNumber]);
 
         //Adds the action listener
@@ -39,6 +44,7 @@ public class Quiz implements ActionListener{
         //Increments the question number
         intQuestionNumber++;
     }
+
     //Constructor
     public Quiz(){
         //Sets up the panel
