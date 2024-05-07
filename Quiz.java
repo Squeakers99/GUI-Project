@@ -54,21 +54,21 @@ public class Quiz implements ActionListener{
         thePanel.setBackground(Color.black);
 
         //Sets up the questions
-        setQuestion("What is the capital of France?", 10);
-        setQuestion("What is the capital of Germany?", 40);
-        setQuestion("What is the capital of Italy?", 70);
-        setQuestion("What is the capital of Spain?", 100);
-        setQuestion("What is the capital of Portugal?", 130);
-        setQuestion("What is the capital of Belgium?", 160);
-        setQuestion("What is the capital of the Netherlands?", 190);
-        setQuestion("What is the capital of Luxembourg?", 220);
-        setQuestion("What is the capital of Switzerland?", 250);
-        setQuestion("What is the capital of Austria?", 280);
-        setQuestion("What is the capital of Poland?", 310);
-        setQuestion("What is the capital of the Czech Republic?", 340);
-        setQuestion("What is the capital of Slovakia?", 370);
-        setQuestion("What is the capital of Hungary?", 400);
-        setQuestion("What is the capital of Romania?", 430);
+        setQuestion("Impulse increases if the change in velocity of a system due to an outside force increases", 10); //True
+        setQuestion("Colliding objects will always conserve energy in elastic collisions only", 40); // False
+        setQuestion("Momentum doesn't transfer to other forms", 70);//True
+        setQuestion("LOCP and LOCE both verify that an object will maintain its state of motion unless otherwise acted upon by an external force", 100); // True
+        setQuestion("An object colliding with a stationary structure such as the wall of a building will be equivalent to a lightweight object colliding with a heavier object", 130); // True
+        setQuestion("As the momentum of an object increases the more time it takes to decrease momentum if the same amount of force is applied to do so", 160); // True
+        setQuestion("Momentum in a system is mathematically conserved in the velocity of the objects. Therefore, calculations summing velocity vectors is equivalent to calculations summing momentum vectors", 190); // False
+        setQuestion("Colliding objects result in energy transfers that still obey LOCE in inelastic and elastic collisions", 220); // True
+        setQuestion("NL1 but not LOCE (due to inelastic colllisions) both describe the same outcomes in the analysis of systems as the LOCP", 250); // True
+        setQuestion("Momentum and mass are directly proportional to each other, as are mass and velocity in the context of momentum", 280); // False
+        setQuestion("According to the LOCP, momentum of a system can never change in closed or open systems", 310); // False
+        setQuestion("Elastic collisions conserve kinetic energy but not other forms of energy", 340); // True
+        setQuestion("In a collision, if one object is at rest, the object at rest post collision will always move in the same direction as pre collison velocity of the object that collides into the object at rest", 370); // True
+        setQuestion("Both LOCE and LOCP confirm NL1", 400); // True
+        setQuestion("Force and impulse are inversely proportional to each other", 430); // False
     }
     
 }
