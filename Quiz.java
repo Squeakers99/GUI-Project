@@ -15,6 +15,7 @@ public class Quiz implements ActionListener{
     JTextField theName = new JTextField("(Replace with your name)");
     JRadioButton[] theAnswers = new JRadioButton[15];
     int intQuestionNumber = 0;
+    int intScore = 0;
 
     Font fntDialog10 = new Font("Dialog", 1, 10);
     Font fntSans17 = new Font("Sans", 1, 17);
@@ -23,6 +24,53 @@ public class Quiz implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent evt){
 
+    }
+    public void calculateScore(){
+        if(theAnswers[0].isSelected() == false){
+            intScore++;
+        }
+        if(theAnswers[1].isSelected() == true){
+            intScore++;
+        }
+        if(theAnswers[2].isSelected() == false){
+            intScore++;
+        }
+        if(theAnswers[3].isSelected() == false){
+            intScore++;
+        }
+        if(theAnswers[4].isSelected() == false){
+            intScore++;
+        }
+        if(theAnswers[5].isSelected() == false){
+            intScore++;
+        }
+        if(theAnswers[6].isSelected() == true){
+            intScore++;
+        }
+        if(theAnswers[7].isSelected() == false){
+            intScore++;
+        }
+        if(theAnswers[8].isSelected() == false){
+            intScore++;
+        }
+        if(theAnswers[9].isSelected() == true){
+            intScore++;
+        }
+        if(theAnswers[10].isSelected() == true){
+            intScore++;
+        }
+        if(theAnswers[11].isSelected() == false){
+            intScore++;
+        }
+        if(theAnswers[12].isSelected() == false){
+            intScore++;
+        }
+        if(theAnswers[13].isSelected() == false){
+            intScore++;
+        }
+        if(theAnswers[14].isSelected() == true){
+            intScore++;
+        }
     }
 
     //Completes all the functionality to set up a question
