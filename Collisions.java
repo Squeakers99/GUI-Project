@@ -29,7 +29,7 @@ public class Collisions implements ActionListener{
             theFrame.setContentPane(theInelasticSimulationPanel.thePanel);
         }else if(evt.getSource() == theQuiz){
             System.out.println("Quiz");
-            theFrame.setContentPane(theQuizPanel.theScroll);
+            theFrame.setContentPane(theQuizPanel.thePanel);
         }else if(evt.getSource() == theLeaderboard){
             theFrame.setContentPane(theLeaderboardPanel.thePanel);
         }
