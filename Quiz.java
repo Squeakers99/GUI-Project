@@ -5,26 +5,55 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class Quiz implements ActionListener{
+    //------------------Properties------------------
 
-    // Properties
+    //Panel
     JPanel thePanel = new JPanel();
+
+    //Labels
     JLabel[] theQuestion = new JLabel[15];
     JLabel theTitle = new JLabel("KNOWLEDGE: Select all those statements that are FALSE. COLOUR IN THE BOXES to indicate your selection");
     JLabel theQuizTitle = new JLabel("SPH 4U1 QUIZ 7: MOMENTUM AND COLLISIONS IN 1D AND 2D");
     JLabel theNameLabel = new JLabel("Name:");
+
+    //Text Field
     JTextField theName = new JTextField("(Replace with your name)");
+
+    //Buttons
+    JButton theSubmit = new JButton("Submit");
     JRadioButton[] theAnswers = new JRadioButton[15];
+
+    //Integer Variables
     int intQuestionNumber = 0;
     int intScore = 0;
 
+    //Leaderboard
+    LeaderboardClass theLeaderboard;
+
+    //Fonts
     Font fntDialog10 = new Font("Dialog", 1, 10);
     Font fntSans17 = new Font("Sans", 1, 17);
+    Font fntDialog13 = new Font("Dialog", 1, 13);
 
-    // Methods
+    //------------------METHODS------------------
+
+    //Mandatory override to read component states
     @Override
     public void actionPerformed(ActionEvent evt){
-
+        if(evt.getSource() == theSubmit){
+            calculateScore();
+            theLeaderboard = new LeaderboardClass("leaderboard.txt", true);
+            try {
+                theLeaderboard.entry(theName.getText(), intScore);
+            } catch (NullPointerException e) {
+                theLeaderboard.entry("N/A", intScore);
+            }
+            theLeaderboard.close("write"); 
+            JOptionPane.showMessageDialog(null, "You scored: " + intScore + "/15", "Score", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
+
+    //Calculates the score that the user got
     public void calculateScore(){
         if(theAnswers[0].isSelected() == false){
             intScore++;
@@ -96,7 +125,7 @@ public class Quiz implements ActionListener{
         intQuestionNumber++;
     }
 
-    //Constructor
+    //------------------CONSTRUCTOR------------------
     public Quiz(){
         //Sets up the panel
         thePanel.setLayout(null);
@@ -145,6 +174,16 @@ public class Quiz implements ActionListener{
         setQuestion("In a collision, if one object is at rest, the object at rest post collision will always move in the same direction as pre collison velocity of the object that collides into the object at rest.", 425); // True
         setQuestion("Both LOCE and LOCP confirm NL1.", 455); // True
         setQuestion("Force and impulse are inversely proportional to each other.", 485); // False
+
+        //Adds the submit button
+        theSubmit.setBounds(443, 510, 75, 20);
+        theSubmit.setFont(fntDialog13);
+        theSubmit.setForeground(Color.white);
+        theSubmit.setBackground(Color.black);
+        theSubmit.setBorder(BorderFactory.createLineBorder(Color.white));
+        thePanel.add(theSubmit);
+
+        //Adds the action listener for the submit button
+        theSubmit.addActionListener(this);
     }
-    
 }
