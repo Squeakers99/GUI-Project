@@ -50,6 +50,7 @@ public class Quiz implements ActionListener{
             }
             theLeaderboard.close("write"); 
             JOptionPane.showMessageDialog(null, "You scored: " + intScore + "/15", "Score", JOptionPane.INFORMATION_MESSAGE);
+            intScore = 0;
         }
     }
 
@@ -88,7 +89,7 @@ public class Quiz implements ActionListener{
         if(theAnswers[10].isSelected() == true){
             intScore++;
         }
-        if(theAnswers[11].isSelected() == false){
+        if(theAnswers[11].isSelected() == true){
             intScore++;
         }
         if(theAnswers[12].isSelected() == false){
@@ -170,7 +171,7 @@ public class Quiz implements ActionListener{
         setQuestion("NL1 but not LOCE (due to inelastic colllisions) both describe the same outcomes in the analysis of systems as the LOCP.", 305); // True
         setQuestion("Momentum and mass are directly proportional to each other, as are mass and velocity in the context of momentum.", 335); // False
         setQuestion("According to the LOCP, momentum of a system can never change in closed or open systems", 365); // False
-        setQuestion("Elastic collisions conserve kinetic energy but not other forms of energy.", 395); // True
+        setQuestion("Elastic collisions conserve kinetic energy but not other forms of energy.", 395); // False
         setQuestion("In a collision, if one object is at rest, the object at rest post collision will always move in the same direction as pre collison velocity of the object that collides into the object at rest.", 425); // True
         setQuestion("Both LOCE and LOCP confirm NL1.", 455); // True
         setQuestion("Force and impulse are inversely proportional to each other.", 485); // False
