@@ -4,6 +4,8 @@
  * V1.0
  */
 
+package Collisions;
+
 /**
  * <h1>Inelastic Panel</h1>
  * This class creates a fully animated JPanel to simulate an inelastic collision between two masses. <br>
@@ -14,11 +16,6 @@
  * @version 1.0
  * @since 2024-05-09
 */
-
-package Collisions.Javadocs;
-
-import Collisions.Elastic;
-
 
 public class Inelastic extends Elastic{
     //------------------METHODS------------------

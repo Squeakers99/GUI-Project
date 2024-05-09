@@ -26,70 +26,70 @@ public class Elastic extends JPanel implements ActionListener, ChangeListener {
     //------------------PROPERTIES------------------
 
     // Font Definitions
-    public Font fntDialog20 = new Font("Dialog", 1, 20);
-    public Font fntDialog15 = new Font("Dialog", 1, 15);
-    public Font fntDialog13 = new Font("Dialog", 1, 13);
-    public Font fntDialog10 = new Font("Dialog", 1, 10);
+    Font fntDialog20 = new Font("Dialog", 1, 20);
+    Font fntDialog15 = new Font("Dialog", 1, 15);
+    Font fntDialog13 = new Font("Dialog", 1, 13);
+    Font fntDialog10 = new Font("Dialog", 1, 10);
 
     // Creates the Divider
-    public JSeparator theMainDivider = new JSeparator(SwingConstants.VERTICAL);
-    public JSeparator theMassAndVelocitiesDivider = new JSeparator(SwingConstants.HORIZONTAL);
-    public JSeparator theVelocitiesDivider = new JSeparator(SwingConstants.HORIZONTAL);
+    JSeparator theMainDivider = new JSeparator(SwingConstants.VERTICAL);
+    JSeparator theMassAndVelocitiesDivider = new JSeparator(SwingConstants.HORIZONTAL);
+    JSeparator theVelocitiesDivider = new JSeparator(SwingConstants.HORIZONTAL);
 
     // Labels
-    public JLabel theM1Label = new JLabel("Mass 1: ", JLabel.CENTER);
-    public JLabel theM2Label = new JLabel("Mass 2: ", JLabel.CENTER);
-    public JLabel theV1InitialLabel = new JLabel("Mass 1 Initial V: ", JLabel.CENTER);
-    public JLabel theV2InitialLabel = new JLabel("Mass 2 Initial V: ", JLabel.CENTER);
-    public JLabel theCheckboxInstructions = new JLabel("Check the box to enable Mass 2 V -->", JLabel.CENTER);
-    public JLabel theV1FinalLabel = new JLabel("M1 Final V: 0", JLabel.CENTER);
-    public JLabel theV2FinalLabel = new JLabel("M2 Final V: 0", JLabel.CENTER);
-    public JLabel theP1FinalLabel = new JLabel("M1 Final P: 0", JLabel.CENTER);
-    public JLabel theP2FinalLabel = new JLabel("M2 Final P: 0", JLabel.CENTER);
-    public JLabel theP1InitialLabel = new JLabel("M1 Init P: 0", JLabel.CENTER);
-    public JLabel theP2InitialLabel = new JLabel("M2 Init P: 0", JLabel.CENTER);
+    JLabel theM1Label = new JLabel("Mass 1: ", JLabel.CENTER);
+    JLabel theM2Label = new JLabel("Mass 2: ", JLabel.CENTER);
+    JLabel theV1InitialLabel = new JLabel("Mass 1 Initial V: ", JLabel.CENTER);
+    JLabel theV2InitialLabel = new JLabel("Mass 2 Initial V: ", JLabel.CENTER);
+    JLabel theCheckboxInstructions = new JLabel("Check the box to enable Mass 2 V -->", JLabel.CENTER);
+    JLabel theV1FinalLabel = new JLabel("M1 Final V: 0", JLabel.CENTER);
+    JLabel theV2FinalLabel = new JLabel("M2 Final V: 0", JLabel.CENTER);
+    JLabel theP1FinalLabel = new JLabel("M1 Final P: 0", JLabel.CENTER);
+    JLabel theP2FinalLabel = new JLabel("M2 Final P: 0", JLabel.CENTER);
+    JLabel theP1InitialLabel = new JLabel("M1 Init P: 0", JLabel.CENTER);
+    JLabel theP2InitialLabel = new JLabel("M2 Init P: 0", JLabel.CENTER);
 
     // Input Fields
-    public JTextField theM1Field = new JTextField("50");
-    public JTextField theM2Field = new JTextField("50");
-    public JTextField theV1InitialField = new JTextField("0");
-    public JTextField theV2InitialField = new JTextField("0");
+    JTextField theM1Field = new JTextField("50");
+    JTextField theM2Field = new JTextField("50");
+    JTextField theV1InitialField = new JTextField("0");
+    JTextField theV2InitialField = new JTextField("0");
 
     // Sliders
-    public JSlider theM1Slider = new JSlider(0, 100, 50);
-    public JSlider theM2Slider = new JSlider(0, 100, 50);
-    public JSlider theV1InitialSlider = new JSlider(0, 10, 0);
-    public JSlider theV2InitialSlider = new JSlider(-10, 10, 0);
+    JSlider theM1Slider = new JSlider(0, 100, 50);
+    JSlider theM2Slider = new JSlider(0, 100, 50);
+    JSlider theV1InitialSlider = new JSlider(0, 10, 0);
+    JSlider theV2InitialSlider = new JSlider(-10, 10, 0);
 
     //Checkbox
-    public JRadioButton theCheckbox = new JRadioButton();
+    JRadioButton theCheckbox = new JRadioButton();
 
     //Buttons
-    public JButton theRunButton = new JButton("Run Simulation");
-    public JButton theResetButton = new JButton("Reset Simulation");
+    JButton theRunButton = new JButton("Run Simulation");
+    JButton theResetButton = new JButton("Reset Simulation");
 
     //Timer
-    public Timer theTimer = new Timer(1000/48, this);
+    Timer theTimer = new Timer(1000/48, this);
 
     // Variables - Calculations
-    public boolean blnM2V = false;
-    public boolean blnCollided = false;
-    public double dblM1 = 1.0;
-    public double dblM2 = 1.0;
-    public double dblV1Initial = 0.0;
-    public double dblV2Initial = 0.0;
-    public double dblV1Final;
-    public double dblV2Final;
-    public double dblP1Initial;
-    public double dblP2Initial;
-    public double dblP1Final;
-    public double dblP2Final;
+    boolean blnM2V = false;
+    boolean blnCollided = false; /** Boolean variable that triggers when  */
+    double dblM1 = 1.0;
+    double dblM2 = 1.0;
+    double dblV1Initial = 0.0;
+    double dblV2Initial = 0.0;
+    double dblV1Final;
+    double dblV2Final;
+    double dblP1Initial;
+    double dblP2Initial;
+    double dblP1Final;
+    double dblP2Final;
 
     //Variables - Animation
-    public int intM1X = 300;
-    public int intM1Size = 50;
-    public int intM2X = 450;
-    public int intM2Size = 50;
+    int intM1X = 300;
+    int intM1Size = 50;
+    int intM2X = 450;
+    int intM2Size = 50;
 
     //------------------METHODS------------------
 

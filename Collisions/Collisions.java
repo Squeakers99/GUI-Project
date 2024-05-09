@@ -1,4 +1,4 @@
-/*
+/**
  * Soheil Rajabali and Jayred Robles
  * Momentum and Collisions Simulator
  * V1.0
@@ -6,9 +6,17 @@
 
 package Collisions;
 
-import Collisions.Javadocs.*;
 import java.awt.event.*;
 import javax.swing.*;
+
+/**
+ * <h1>Collisions Main</h1>
+ * Class created to manage the main screen
+ * 
+ * @author Soheil Rajabali, Jayred Robles
+ * @version 1.0
+ * @since 2024-05-09
+ */
 
 public class Collisions implements ActionListener{
     //------------------PROPERTIES------------------
@@ -35,6 +43,11 @@ public class Collisions implements ActionListener{
     JMenuItem theAbout = new JMenuItem("About");
 
     //------------------METHODS------------------
+    
+    /**
+     * Handles the action events for menu items.
+     * @param evt The ActionEvent object.
+    */
     @Override
     public void actionPerformed(ActionEvent evt){
         if(evt.getSource() == theElasticSimulation){
@@ -55,6 +68,10 @@ public class Collisions implements ActionListener{
     }
 
     //------------------CONSTRUCTOR------------------
+    
+    /**
+     * Constructs a Collisions object and sets up the frame and menu.
+    */
     public Collisions() {
         //Sets up the frame
         theFrame.setTitle("Collisions");
@@ -88,6 +105,10 @@ public class Collisions implements ActionListener{
     }
     
     //Main Method
+    /**
+     * The entry point of the program.
+     * @param args The command line arguments.
+     */
     public static void main(String[] args) {
         new Collisions();
     }

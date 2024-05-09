@@ -5,7 +5,7 @@
  * V1.0
  */
 
-package Collisions.Javadocs;
+package Collisions;
 
 import java.awt.*;
 import javax.swing.*;

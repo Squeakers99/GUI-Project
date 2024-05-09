@@ -15,6 +15,11 @@ import java.io.InputStream;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+/**
+ * <h1>Help Panel</h1>
+ * The Help class represents a JPanel that displays a help image.
+ * It extends the JPanel class and overrides the paintComponent method to draw the image on the panel.
+ */
 public class Help extends JPanel{
     //------------------PROPERTIES------------------
     //Help Image
@@ -23,12 +28,21 @@ public class Help extends JPanel{
 
     //------------------METHODS------------------
 
+    /**
+     * Overrides the paintComponent method to draw the image on the panel.
+     * 
+     * @param theGraphics the Graphics object used for drawing
+     */
     @Override
     public void paintComponent(Graphics theGraphics){
         theGraphics.drawImage(img, 0, 0, null);
     }
 
-    //Method to load the image
+    /**
+     * Loads the image from the specified file name.
+     * 
+     * @param strFileName the file name of the image to be loaded
+     */
     public void loadImage(String strFileName){
         imageclass = this.getClass().getResourceAsStream(strFileName);
 
@@ -51,6 +65,10 @@ public class Help extends JPanel{
     }
 
     //------------------CONSTRUCTOR------------------
+    /**
+     * Constructs a Help object.
+     * Sets up the panel, loads the image, and repaints the panel to show the image.
+    */
     public Help(){
         //Sets up the panel
         this.setLayout(null);

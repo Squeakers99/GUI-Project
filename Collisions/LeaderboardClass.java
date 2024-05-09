@@ -4,7 +4,7 @@
  * V1.0
  */
 
-package Collisions.Javadocs;
+package Collisions;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -15,6 +15,7 @@ import java.io.PrintWriter;
 
 // Leaderboard Object Created to manage the leaderboard
 /**
+ * <h1>Leaderboard Management</h1>
  * Class Created to manage the leaderboard functionality
  * This class is able to read and write to a file, sort the leaderboard, and return the leaderboard data
  * 

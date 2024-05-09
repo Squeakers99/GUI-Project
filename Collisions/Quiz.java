@@ -11,8 +11,6 @@ import java.awt.Font;
 import java.awt.event.*;
 import javax.swing.*;
 
-import Collisions.Javadocs.LeaderboardClass;
-
 /**
  * Class created to manage the quiz screen
  * 
