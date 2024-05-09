@@ -1,3 +1,9 @@
+/*
+ * Soheil Rajabali and Jayred Robles
+ * Momentum and Collisions Simulator
+ * V1.0
+ */
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -6,6 +12,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 // Leaderboard Object Created to manage the leaderboard
+/**
+ * Class Created to manage the leaderboard functionality
+ * This class is able to read and write to a file, sort the leaderboard, and return the leaderboard data
+ * 
+ * @author Soheil Rajabali, Jayred Robles
+ * @version 1.0
+ * @since 2024-05-09
+*/
 public class LeaderboardClass {
     //------------------PROPERTIES------------------
     private BufferedReader theBufferedReader = null; // Used to read from a file
@@ -23,6 +37,10 @@ public class LeaderboardClass {
     //------------------METHODS------------------
 
     // Reads a line from the file
+    /**
+     * Reads a line from the file
+     * @return the line that was read
+     */
     public String readLine() {
         String strOldLine;
         try {
@@ -42,6 +60,11 @@ public class LeaderboardClass {
     }
 
     // Adds an entry to the leaderboard
+    /**
+     * Adds an entry to the leaderboard
+     * @param strName the name of the player
+     * @param intScore the score of the player
+     */
     public void entry(String strName, int intScore) {
         this.thePrintWriter.println(strName + "," + intScore);
         this.thePrintWriter.flush();
@@ -51,6 +74,10 @@ public class LeaderboardClass {
     }
 
     // Closes the file
+    /**
+     * Closes the file from reading or writing
+     * @param strReadOrWrite the type of file to close
+     */
     public void close(String strReadOrWrite) {
         if (strReadOrWrite.equalsIgnoreCase("read")) {
             try {
@@ -71,7 +98,10 @@ public class LeaderboardClass {
         }
     }
 
-    // Calculates the length of the leaderboard file and loads its data into an array
+    // Loads the leaderboard data into a string
+    /**
+     * Loads the leaderboard into a string
+    */
     public void leaderboardDataLoading() {
         while (this.blnEOF == false) {
             intLineCount++;
@@ -81,11 +111,18 @@ public class LeaderboardClass {
     }
 
     // Returns the length of the leaderboard
+    /**
+     * Returns the length of the leaderboard
+     * @return the length of the leaderboard
+     */
     public int getLength() {
         return this.intLineCount;
     }
 
     // Loads the leaderboard data into the strLeaderboard array
+    /**
+     * Loads the leaderboard data into an array
+    */
     public void LoadArray() {
         this.leaderboardDataLoading();
         strLeaderboard = new String[intLineCount][2];
@@ -100,6 +137,9 @@ public class LeaderboardClass {
     }
 
     // Sorts the leaderboard in descending order based on scores
+    /**
+     * Sorts the leaderboard in descending order based on scores
+    */
     public void sortLeaderboard() {
         String strTempName;
         String strTempScore;
@@ -118,6 +158,10 @@ public class LeaderboardClass {
     }
 
     // Returns the leaderboard data
+    /**
+     * Returns the leaderboard data
+     * @return the leaderboard data
+     */
     public String[][] getLeaderboard() {
         return this.strLeaderboard;
     }
@@ -125,6 +169,10 @@ public class LeaderboardClass {
     //------------------CONSTRUCTORS------------------
 
     // Opens the leaderboard file for reading
+    /**
+     * Opens the leaderboard file for reading
+     * @param strFileName the name of the file to read
+    */
     public LeaderboardClass(String strFileName) {
         this.strFileName = strFileName;
         try {
@@ -150,6 +198,7 @@ public class LeaderboardClass {
     }
 
     // Opens the leaderboard file for writing
+    
     public LeaderboardClass(String strFileName, boolean blnAppend) {
         try {
             this.theFileWriter = new FileWriter(strFileName, blnAppend);

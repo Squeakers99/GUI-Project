@@ -1,10 +1,22 @@
+/*
+ * Soheil Rajabali and Jayred Robles
+ * Momentum and Collisions Simulator
+ * V1.0
+ */
+
 import java.awt.*;
 import javax.swing.*;
 
-public class LeaderboardScreen {
-   //------------------PROPERTIES------------------ 
+/**
+ * Class created to manage the leaderboard screen
+ * 
+ * @author Soheil Rajabali, Jayred Robles
+ * @version 1.0
+ * @since 2024-05-09
+ */
 
-    JPanel thePanel = new JPanel();
+public class LeaderboardScreen extends JPanel {
+   //------------------PROPERTIES------------------ 
 
     //Labels
     JLabel theNameHeading = new JLabel("Name");
@@ -21,17 +33,20 @@ public class LeaderboardScreen {
 
     //Integers
     int intEntryY = 30;
-    int intLoopCount;
 
     //Strings
     String strLeaderboard[][];
 
     //------------------CONSTRUCTOR------------------
+
+    /**
+     * Constructor for the LeaderboardScreen class
+     */
     public LeaderboardScreen(){
         //Sets up the panel
-        thePanel.setLayout(null);
-        thePanel.setPreferredSize(new Dimension(960, 540));
-        thePanel.setBackground(Color.black);
+        setLayout(null);
+        setPreferredSize(new Dimension(960, 540));
+        setBackground(Color.black);
 
         //Loads the leaderboard into an array
         theLeaderboard = new LeaderboardClass("leaderboard.txt");
@@ -47,12 +62,12 @@ public class LeaderboardScreen {
         theNameHeading.setBounds(20, 0, 300, 50);
         theNameHeading.setFont(fntDialog20);
         theNameHeading.setForeground(Color.white);
-        thePanel.add(theNameHeading);
+        add(theNameHeading);
 
         theScoreHeading.setBounds(850, 0, 300, 50);
         theScoreHeading.setFont(fntDialog20);
         theScoreHeading.setForeground(Color.white);
-        thePanel.add(theScoreHeading);
+        add(theScoreHeading);
 
         //Prints the leaderboard
         for(int intLoopCount = 0; intLoopCount < theLeaderboard.getLength(); intLoopCount++){
@@ -60,13 +75,13 @@ public class LeaderboardScreen {
             theNames[intLoopCount].setBounds(20, intEntryY, 300, 50);
             theNames[intLoopCount].setFont(fntDialog13);
             theNames[intLoopCount].setForeground(Color.white);
-            thePanel.add(theNames[intLoopCount]);
+            add(theNames[intLoopCount]);
 
             theScores[intLoopCount] = new JLabel(strLeaderboard[intLoopCount][1]);
             theScores[intLoopCount].setBounds(850, intEntryY, 300, 50);
             theScores[intLoopCount].setFont(fntDialog13);
             theScores[intLoopCount].setForeground(Color.white);
-            thePanel.add(theScores[intLoopCount]);
+            add(theScores[intLoopCount]);
 
             intEntryY += 20;
         }

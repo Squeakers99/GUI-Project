@@ -1,3 +1,9 @@
+/*
+ * Soheil Rajabali and Jayred Robles
+ * Momentum and Collisions Simulator
+ * V1.0
+ */
+
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -8,13 +14,15 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class Help extends JPanel{
-    //------------------Properties------------------
+    //------------------PROPERTIES------------------
     //Panel
     //JPanel thePanel = new JPanel();
 
     //Help Image
     BufferedImage img = null;
     InputStream imageclass = null;
+
+    //------------------METHODS------------------
 
     @Override
     public void paintComponent(Graphics theGraphics){

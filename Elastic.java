@@ -1,14 +1,28 @@
+/*
+ * Soheil Rajabali and Jayred Robles
+ * Momentum and Collisions Simulator
+ * V1.0
+ */
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
-public class Elastic implements ActionListener, ChangeListener {
+/**
+ * <h1>Elastic Panel</h1>
+ * This class creates a fully animated JPanel to simulate an elastic collision between two masses. <br>
+ * It contains sliders, text fields, check boxes, dividers, and buttons to control the simulation. <br>
+ * It also contains a timer to animate the simulation.<br>
+ * 
+ * @author Soheil Rajabali, Jayred Robles
+ * @version 1.0
+ * @since 2024-05-09
+*/
+
+public class Elastic extends JPanel implements ActionListener, ChangeListener {
     //------------------PROPERTIES------------------
 
-    // Panel Creation
-    AnimationPanel thePanel = new AnimationPanel();
-    
     // Font Definitions
     Font fntDialog20 = new Font("Dialog", 1, 20);
     Font fntDialog15 = new Font("Dialog", 1, 15);
@@ -69,9 +83,34 @@ public class Elastic implements ActionListener, ChangeListener {
     double dblP1Final;
     double dblP2Final;
 
+    //Variables - Animation
+    int intM1X = 300;
+    int intM1Size = 50;
+    int intM2X = 450;
+    int intM2Size = 50;
+
     //------------------METHODS------------------
 
+    //Override to paint the components
+    /**
+     * Overrided method that handles the animation
+     * @param g Contains the graphics object that is going to be drawn on the panel
+     */
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.setColor(Color.red);
+        g.fillRect(240, 400, 720, 5);
+        g.setColor(Color.white);
+        g.fillOval(intM1X, 400-intM1Size, intM1Size, intM1Size);
+        g.fillOval(intM2X, 400-intM2Size, intM2Size, intM2Size);
+    }
+
     //Mandatory override to read component states
+    /**
+     * Overrided method that triggers when a Field, Checkbox, or Button has been triggered
+     * @param evt Contains the event that was triggered
+     */
     @Override
     public void actionPerformed(ActionEvent evt) {
         if(evt.getSource() == theM1Field){
@@ -152,8 +191,8 @@ public class Elastic implements ActionListener, ChangeListener {
                 theTimer.start();
             }
         }else if(evt.getSource() == theResetButton){
-            thePanel.intM1X = 300;
-            thePanel.intM2X = 450;
+            intM1X = 300;
+            intM2X = 450;
             simulationSetup();
             blnCollided = false;
             theM1Field.setEnabled(true);
@@ -174,6 +213,10 @@ public class Elastic implements ActionListener, ChangeListener {
     }
 
     //Mandatory override to read slider state
+    /**
+     * Overrided method that triggers when a Slider has been triggered
+     * @param evt Contains the event that was triggered
+     */
     @Override
     public void stateChanged(ChangeEvent evt) {
         if (evt.getSource() == theM1Slider) {
@@ -200,6 +243,9 @@ public class Elastic implements ActionListener, ChangeListener {
     }
 
     //Method to perform calculations and display them
+    /**
+     * Method to perform all calculations that are going to be displayed
+    */
     public void calculations(){
         //Sets all the variables
         dblM1 = Double.parseDouble(theM1Field.getText());
@@ -233,6 +279,9 @@ public class Elastic implements ActionListener, ChangeListener {
     }
 
     //Method to draw the labels
+    /**
+     * Method to draw all calculation labels on the panel
+    */
     public void drawLabels(){
         //Rounds all to 1 Decimal Place
         dblV1Final = Math.round(dblV1Final * 10.0) / 10.0;
@@ -254,92 +303,101 @@ public class Elastic implements ActionListener, ChangeListener {
         theV1FinalLabel.setBounds(5, 430, 110, 30);
         theV1FinalLabel.setFont(fntDialog13);
         theV1FinalLabel.setForeground(Color.white);
-        thePanel.add(theV1FinalLabel);
+        add(theV1FinalLabel);
 
         theV2FinalLabel.setBounds(5, 460, 110, 30);
         theV2FinalLabel.setFont(fntDialog13);
         theV2FinalLabel.setForeground(Color.white);
-        thePanel.add(theV2FinalLabel);
+        add(theV2FinalLabel);
 
         theP1FinalLabel.setBounds(120, 430, 110, 30);
         theP1FinalLabel.setFont(fntDialog13);
         theP1FinalLabel.setForeground(Color.white);
-        thePanel.add(theP1FinalLabel);
+        add(theP1FinalLabel);
 
         theP2FinalLabel.setBounds(120, 460, 110, 30);
         theP2FinalLabel.setFont(fntDialog13);
         theP2FinalLabel.setForeground(Color.white);
-        thePanel.add(theP2FinalLabel);
+        add(theP2FinalLabel);
 
         theP1InitialLabel.setBounds(5, 490, 100, 30);
         theP1InitialLabel.setFont(fntDialog13);
         theP1InitialLabel.setForeground(Color.white);
-        thePanel.add(theP1InitialLabel);
+        add(theP1InitialLabel);
 
         theP2InitialLabel.setBounds(120, 490, 100, 30);
         theP2InitialLabel.setFont(fntDialog13);
         theP2InitialLabel.setForeground(Color.white);
-        thePanel.add(theP2InitialLabel);
+        add(theP2InitialLabel);
     }
 
     //Method to setup the simulation
+    /**
+     * Sets up the simulation by setting the mass sizes to the variables
+    */
     public void simulationSetup(){
-        thePanel.intM1Size = (int)dblM1;
-        thePanel.intM2Size = (int)dblM2;
-        thePanel.repaint();
+        intM1Size = (int)dblM1;
+        intM2Size = (int)dblM2;
+        repaint();
     }
 
     //Method to run the simulation
+    /**
+     * Runs the simulation
+    */
     public void simulationRun(){
         if(blnCollided == false){
-            thePanel.intM1X += (int)dblV1Initial;
-            thePanel.intM2X += (int)dblV2Initial;
+            intM1X += (int)dblV1Initial;
+            intM2X += (int)dblV2Initial;
         }else{
             if(dblV1Final < 1.0 && dblV1Final > 0.0){
-                thePanel.intM1X += 1;
+                intM1X += 1;
             }else if(dblV1Final > -1.0 && dblV1Final < 0.0){
-                thePanel.intM1X -= 1;
+                intM1X -= 1;
             }else{
-                thePanel.intM1X += (int)dblV1Final;
+                intM1X += (int)dblV1Final;
             }
 
             if(dblV2Final < 1.0 && dblV2Final > 0.0){
-                thePanel.intM2X += 1;
+                intM2X += 1;
             }else if (dblV2Final > -1.0 && dblV2Final < 0.0){
-                thePanel.intM2X -= 1;
+                intM2X -= 1;
             }else{
-                thePanel.intM2X += (int)dblV2Final;
+                intM2X += (int)dblV2Final;
             }
         }
-        if(thePanel.intM1X+thePanel.intM1Size >= thePanel.intM2X){
+        if(intM1X+intM1Size >= intM2X){
             blnCollided = true;
         }
 
         //Puts M1 out of the screen if it gets on the configuration side of the panel
-        if(thePanel.intM1X <= 240){
-            thePanel.intM1X = 0 - thePanel.intM1Size;
+        if(intM1X <= 240){
+            intM1X = 0 - intM1Size;
         }
         
-        thePanel.repaint();
+        repaint();
     }
 
     //------------------CONSTRUCTOR------------------
+    /**
+     * Constructor that sets up and formats the whole panel with sliders, text boxes, check boxes, dividers, and buttons; as well as the simulation
+    */
     public Elastic() {
         // Panel Properties
-        thePanel.setPreferredSize(new Dimension(960, 540));
-        thePanel.setLayout(null);
-        thePanel.setBackground(Color.black);
+        setPreferredSize(new Dimension(960, 540));
+        setLayout(null);
+        setBackground(Color.black);
 
         // Main Divider Properties
         theMainDivider.setBounds(240, 0, 10, 540);
         theMainDivider.setForeground(Color.white);
-        thePanel.add(theMainDivider);
+        add(theMainDivider);
 
         // Label for Mass 1
         theM1Label.setBounds(70, 10, 80, 20);
         theM1Label.setFont(fntDialog20);
         theM1Label.setForeground(Color.white);
-        thePanel.add(theM1Field);
+        add(theM1Field);
 
         // Text Field for Mass 1
         theM1Field.setBounds(150, 10, 50, 20);
@@ -347,7 +405,7 @@ public class Elastic implements ActionListener, ChangeListener {
         theM1Field.setBorder(null);
         theM1Field.setFont(fntDialog20);
         theM1Field.setForeground(Color.white);
-        thePanel.add(theM1Label);
+        add(theM1Label);
 
         // Slider for Mass 1
         theM1Slider.setBounds(20, 40, 200, 50);
@@ -358,13 +416,13 @@ public class Elastic implements ActionListener, ChangeListener {
         theM1Slider.setMajorTickSpacing(10);
         theM1Slider.setMinorTickSpacing(5);
         theM1Slider.setSnapToTicks(true);
-        thePanel.add(theM1Slider);
+        add(theM1Slider);
 
         // Label for Mass 2
         theM2Label.setBounds(70, 105, 80, 20);
         theM2Label.setFont(fntDialog20);
         theM2Label.setForeground(Color.white);
-        thePanel.add(theM2Label);
+        add(theM2Label);
 
         // Text Field for Mass 2
         theM2Field.setBounds(150, 105, 50, 20);
@@ -372,7 +430,7 @@ public class Elastic implements ActionListener, ChangeListener {
         theM2Field.setBorder(null);
         theM2Field.setFont(fntDialog20);
         theM2Field.setForeground(Color.white);
-        thePanel.add(theM2Field);
+        add(theM2Field);
 
         // Slider for Mass 2
         theM2Slider.setBounds(20, 135, 200, 50);
@@ -383,29 +441,29 @@ public class Elastic implements ActionListener, ChangeListener {
         theM2Slider.setMajorTickSpacing(10);
         theM2Slider.setMinorTickSpacing(5);
         theM2Slider.setSnapToTicks(true);
-        thePanel.add(theM2Slider);
+        add(theM2Slider);
 
         // Divider between Mass and Velocities
         theMassAndVelocitiesDivider.setBounds(0, 200, 240, 5);
         theMassAndVelocitiesDivider.setForeground(Color.white);
-        thePanel.add(theMassAndVelocitiesDivider);
+        add(theMassAndVelocitiesDivider);
 
         // Label for Checkbox Instructions
         theCheckboxInstructions.setBounds(1, 200, 220, 50);
         theCheckboxInstructions.setFont(fntDialog10);
         theCheckboxInstructions.setForeground(Color.white);
-        thePanel.add(theCheckboxInstructions);
+        add(theCheckboxInstructions);
 
         // Checkbox
         theCheckbox.setBounds(215, 215, 20, 20);
         theCheckbox.setOpaque(false);
-        thePanel.add(theCheckbox);
+        add(theCheckbox);
 
         // Mass 1 Initial V Label
         theV1InitialLabel.setBounds(1, 240, 220, 30);
         theV1InitialLabel.setFont(fntDialog15);
         theV1InitialLabel.setForeground(Color.white);
-        thePanel.add(theV1InitialLabel);
+        add(theV1InitialLabel);
 
         // Mass 1 Initial V Field
         theV1InitialField.setBounds(170, 240, 50, 30);
@@ -413,7 +471,7 @@ public class Elastic implements ActionListener, ChangeListener {
         theV1InitialField.setBorder(null);
         theV1InitialField.setFont(fntDialog15);
         theV1InitialField.setForeground(Color.white);
-        thePanel.add(theV1InitialField);
+        add(theV1InitialField);
 
         // Mass 1 Initial V Slider
         theV1InitialSlider.setBounds(20, 270, 200, 50);
@@ -424,13 +482,13 @@ public class Elastic implements ActionListener, ChangeListener {
         theV1InitialSlider.setMajorTickSpacing(2);
         theV1InitialSlider.setMinorTickSpacing(1);
         theV1InitialSlider.setSnapToTicks(true);
-        thePanel.add(theV1InitialSlider);
+        add(theV1InitialSlider);
 
         // Mass 2 Initial V Label
         theV2InitialLabel.setBounds(1, 325, 220, 30);
         theV2InitialLabel.setFont(fntDialog15);
         theV2InitialLabel.setForeground(Color.white);
-        thePanel.add(theV2InitialLabel);
+        add(theV2InitialLabel);
 
         // Mass 2 Initial V Field
         theV2InitialField.setBounds(170, 325, 50, 30);
@@ -439,7 +497,7 @@ public class Elastic implements ActionListener, ChangeListener {
         theV2InitialField.setFont(fntDialog15);
         theV2InitialField.setForeground(Color.white);
         theV2InitialField.setEnabled(false);
-        thePanel.add(theV2InitialField);
+        add(theV2InitialField);
 
         // Mass 2 Initial V Slider
         theV2InitialSlider.setBounds(20, 355, 200, 50);
@@ -451,12 +509,12 @@ public class Elastic implements ActionListener, ChangeListener {
         theV2InitialSlider.setMinorTickSpacing(1);
         theV2InitialSlider.setEnabled(false);
         theV2InitialSlider.setSnapToTicks(true);
-        thePanel.add(theV2InitialSlider);
+        add(theV2InitialSlider);
 
         // Divider between V inputs and calculations
         theVelocitiesDivider.setBounds(0, 420, 240, 5);
         theVelocitiesDivider.setForeground(Color.white);
-        thePanel.add(theVelocitiesDivider);
+        add(theVelocitiesDivider);
 
         // Run Button for Simulation
         theRunButton.setBounds(260, 20, 200, 30);
@@ -464,7 +522,7 @@ public class Elastic implements ActionListener, ChangeListener {
         theRunButton.setForeground(Color.white);
         theRunButton.setBackground(Color.black);
         theRunButton.setBorder(BorderFactory.createLineBorder(Color.white));
-        thePanel.add(theRunButton);
+        add(theRunButton);
 
         // Reset Button for Simulation
         theResetButton.setBounds(740, 20, 200, 30);
@@ -472,7 +530,7 @@ public class Elastic implements ActionListener, ChangeListener {
         theResetButton.setForeground(Color.white);
         theResetButton.setBackground(Color.black);
         theResetButton.setBorder(BorderFactory.createLineBorder(Color.white));
-        thePanel.add(theResetButton);
+        add(theResetButton);
 
         // Runs Calculations
         this.calculations();

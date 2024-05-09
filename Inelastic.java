@@ -1,5 +1,26 @@
+/*
+ * Soheil Rajabali and Jayred Robles
+ * Momentum and Collisions Simulator
+ * V1.0
+ */
+
+/**
+ * <h1>Inelastic Panel</h1>
+ * This class creates a fully animated JPanel to simulate an inelastic collision between two masses. <br>
+ * It contains sliders, text fields, check boxes, dividers, and buttons to control the simulation. <br>
+ * It also contains a timer to animate the simulation.<br>
+ * 
+ * @author Soheil Rajabali, Jayred Robles
+ * @version 1.0
+ * @since 2024-05-09
+*/
+
 public class Inelastic extends Elastic{
-    // Methods
+    //------------------METHODS------------------
+
+    /**
+     * Overrided Method to change the calculations
+    */
     @Override
     public void calculations(){
         //Sets all the variables
@@ -28,7 +49,10 @@ public class Inelastic extends Elastic{
         drawLabels();
     }
 
-    // Constructor
+    //------------------METHODS------------------
+    /**
+     * Constructor that creates the Inelastic Panel
+    */
     public Inelastic(){
         super();
     }

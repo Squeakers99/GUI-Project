@@ -1,3 +1,9 @@
+/*
+ * Soheil Rajabali and Jayred Robles
+ * Momentum and Collisions Simulator
+ * V1.0
+ */
+
 import java.awt.Dimension;
 
 public class About extends Help{

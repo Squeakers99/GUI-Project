@@ -1,3 +1,9 @@
+/*
+ * Soheil Rajabali and Jayred Robles
+ * Momentum and Collisions Simulator
+ * V1.0
+ */
+
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -29,14 +35,14 @@ public class Collisions implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent evt){
         if(evt.getSource() == theElasticSimulation){
-            theFrame.setContentPane(theElasticSimulationPanel.thePanel);
+            theFrame.setContentPane(theElasticSimulationPanel);
         }else if(evt.getSource() == theInelasticSimulation){
-            theFrame.setContentPane(theInelasticSimulationPanel.thePanel);
+            theFrame.setContentPane(theInelasticSimulationPanel);
         }else if(evt.getSource() == theQuiz){
-            theFrame.setContentPane(theQuizPanel.thePanel);
+            theFrame.setContentPane(theQuizPanel);
         }else if(evt.getSource() == theLeaderboard){
             theLeaderboardPanel = new LeaderboardScreen();
-            theFrame.setContentPane(theLeaderboardPanel.thePanel);
+            theFrame.setContentPane(theLeaderboardPanel);
         }else if(evt.getSource() == theHelp){
             theFrame.setContentPane(theHelpPanel);
         }else if(evt.getSource() == theAbout){

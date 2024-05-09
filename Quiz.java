@@ -1,14 +1,25 @@
+/*
+ * Soheil Rajabali and Jayred Robles
+ * Momentum and Collisions Simulator
+ * V1.0
+ */
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Quiz implements ActionListener{
-    //------------------Properties------------------
+/**
+ * Class created to manage the quiz screen
+ * 
+ * @author Soheil Rajabali, Jayred Robles
+ * @version 1.0
+ * @since 2024-05-09
+ */
 
-    //Panel
-    JPanel thePanel = new JPanel();
+public class Quiz extends JPanel implements ActionListener{
+    //------------------Properties------------------
 
     //Labels
     JLabel[] theQuestion = new JLabel[15];
@@ -38,6 +49,10 @@ public class Quiz implements ActionListener{
     //------------------METHODS------------------
 
     //Mandatory override to read component states
+    /**
+     * Mandatory override to read component states
+     * @param evt 
+     */
     @Override
     public void actionPerformed(ActionEvent evt){
         if(evt.getSource() == theSubmit){
@@ -55,6 +70,9 @@ public class Quiz implements ActionListener{
     }
 
     //Calculates the score that the user got
+    /**
+     * Calculates the score that the user got
+    */
     public void calculateScore(){
         if(theAnswers[0].isSelected() == false){
             intScore++;
@@ -104,20 +122,25 @@ public class Quiz implements ActionListener{
     }
 
     //Completes all the functionality to set up a question
+    /**
+     * Completes all the functionality to set up a question
+     * @param strQuestion the question to be asked
+     * @param intQuestionY the y position of the question
+     */
     public void setQuestion(String strQuestion, int intQuestionY){
         //Sets up the button
         theAnswers[intQuestionNumber] = new JRadioButton();
         theAnswers[intQuestionNumber].setBounds(10, intQuestionY-2, 35, 35);
         theAnswers[intQuestionNumber].setForeground(Color.white);
         theAnswers[intQuestionNumber].setOpaque(false);
-        thePanel.add(theAnswers[intQuestionNumber]);
+        add(theAnswers[intQuestionNumber]);
         
         //Sets up the question
         theQuestion[intQuestionNumber] = new JLabel(strQuestion);
         theQuestion[intQuestionNumber].setFont(fntDialog10);
         theQuestion[intQuestionNumber].setBounds(40, intQuestionY, 1450, 30);
         theQuestion[intQuestionNumber].setForeground(Color.white);
-        thePanel.add(theQuestion[intQuestionNumber]);
+        add(theQuestion[intQuestionNumber]);
 
         //Adds the action listener
         theAnswers[intQuestionNumber].addActionListener(this);
@@ -127,23 +150,26 @@ public class Quiz implements ActionListener{
     }
 
     //------------------CONSTRUCTOR------------------
+    /**
+     * Constructor for the Quiz class
+    */
     public Quiz(){
         //Sets up the panel
-        thePanel.setLayout(null);
-        thePanel.setPreferredSize(new Dimension(960, 540));
-        thePanel.setBackground(Color.black);
+        setLayout(null);
+        setPreferredSize(new Dimension(960, 540));
+        setBackground(Color.black);
 
         //Sets up the quiz title
         theQuizTitle.setFont(fntSans17);
         theQuizTitle.setBounds(10, 5, 950, 30);
         theQuizTitle.setForeground(Color.white);
-        thePanel.add(theQuizTitle);
+        add(theQuizTitle);
 
         //Sets up the name label
         theNameLabel.setFont(fntDialog10);
         theNameLabel.setBounds(715, 5, 50, 30);
         theNameLabel.setForeground(Color.white);
-        thePanel.add(theNameLabel);
+        add(theNameLabel);
 
         //Sets up the name text box
         theName.setBounds(750, 5, 200, 30);
@@ -151,13 +177,13 @@ public class Quiz implements ActionListener{
         theName.setForeground(Color.white);
         theName.setOpaque(false);
         theName.setBorder(null);
-        thePanel.add(theName);
+        add(theName);
 
         //Sets up the title
         theTitle.setFont(fntSans17);
         theTitle.setBounds(20, 35, 950, 30);
         theTitle.setForeground(Color.white);
-        thePanel.add(theTitle);
+        add(theTitle);
 
         //Sets up the questions
         setQuestion("Impulse increases if the change in velocity of a system due to an outside force increases.", 65); //True
@@ -182,7 +208,7 @@ public class Quiz implements ActionListener{
         theSubmit.setForeground(Color.white);
         theSubmit.setBackground(Color.black);
         theSubmit.setBorder(BorderFactory.createLineBorder(Color.white));
-        thePanel.add(theSubmit);
+        add(theSubmit);
 
         //Adds the action listener for the submit button
         theSubmit.addActionListener(this);
