@@ -2,6 +2,8 @@ import java.awt.*;
 import javax.swing.*;
 
 public class LeaderboardScreen {
+   //------------------PROPERTIES------------------ 
+
     JPanel thePanel = new JPanel();
 
     //Labels
@@ -24,6 +26,7 @@ public class LeaderboardScreen {
     //Strings
     String strLeaderboard[][];
 
+    //------------------CONSTRUCTOR------------------
     public LeaderboardScreen(){
         //Sets up the panel
         thePanel.setLayout(null);

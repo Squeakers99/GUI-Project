@@ -10,15 +10,20 @@ public class Collisions implements ActionListener{
     Inelastic theInelasticSimulationPanel = new Inelastic();
     Quiz theQuizPanel = new Quiz();
     LeaderboardScreen theLeaderboardPanel;
+    Help theHelpPanel = new Help();;
+    About theAboutPanel = new About();
 
     //Menu Items
     JMenuBar theMenuBar = new JMenuBar();
     JMenu theFileMenu = new JMenu("File");
     JMenu theEvaluationsMenu = new JMenu("Evaluations");
+    JMenu theMoreMenu = new JMenu("More");
     JMenuItem theElasticSimulation = new JMenuItem("Elastic Simulation");
     JMenuItem theInelasticSimulation = new JMenuItem("Inelastic Simulation");
     JMenuItem theQuiz = new JMenuItem("Quiz");
     JMenuItem theLeaderboard = new JMenuItem("Leaderboard");
+    JMenuItem theHelp = new JMenuItem("Help");
+    JMenuItem theAbout = new JMenuItem("About");
 
     //------------------METHODS------------------
     @Override
@@ -28,11 +33,14 @@ public class Collisions implements ActionListener{
         }else if(evt.getSource() == theInelasticSimulation){
             theFrame.setContentPane(theInelasticSimulationPanel.thePanel);
         }else if(evt.getSource() == theQuiz){
-            System.out.println("Quiz");
             theFrame.setContentPane(theQuizPanel.thePanel);
         }else if(evt.getSource() == theLeaderboard){
             theLeaderboardPanel = new LeaderboardScreen();
             theFrame.setContentPane(theLeaderboardPanel.thePanel);
+        }else if(evt.getSource() == theHelp){
+            theFrame.setContentPane(theHelpPanel);
+        }else if(evt.getSource() == theAbout){
+            theFrame.setContentPane(theAboutPanel);
         }
         theFrame.pack();
     }
@@ -41,15 +49,18 @@ public class Collisions implements ActionListener{
     public Collisions() {
         //Sets up the frame
         theFrame.setTitle("Collisions");
-        theFrame.setContentPane(theElasticSimulationPanel.thePanel);
+        theFrame.setContentPane(theAboutPanel);
 
         // Gets the Menu ready
         theFileMenu.add(theElasticSimulation);
         theFileMenu.add(theInelasticSimulation);
         theEvaluationsMenu.add(theQuiz);
         theEvaluationsMenu.add(theLeaderboard);
+        theMoreMenu.add(theHelp);
+        theMoreMenu.add(theAbout);
         theMenuBar.add(theFileMenu);
         theMenuBar.add(theEvaluationsMenu);
+        theMenuBar.add(theMoreMenu);
         theFrame.setJMenuBar(theMenuBar);
 
         //Adds action listeners
@@ -57,6 +68,8 @@ public class Collisions implements ActionListener{
         theInelasticSimulation.addActionListener(this);
         theQuiz.addActionListener(this);
         theLeaderboard.addActionListener(this);
+        theHelp.addActionListener(this);
+        theAbout.addActionListener(this);
 
         //Packs the frame
         theFrame.setResizable(false);
