@@ -4,6 +4,9 @@
  * V1.0
  */
 
+package Collisions;
+
+import Collisions.Javadocs.*;
 import java.awt.event.*;
 import javax.swing.*;
 

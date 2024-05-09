@@ -1,8 +1,11 @@
+
 /*
  * Soheil Rajabali and Jayred Robles
  * Momentum and Collisions Simulator
  * V1.0
  */
+
+package Collisions.Javadocs;
 
 import java.awt.*;
 import javax.swing.*;

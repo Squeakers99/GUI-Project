@@ -4,6 +4,8 @@
  * V1.0
  */
 
+package Collisions;
+
 import java.awt.Dimension;
 
 public class About extends Help{

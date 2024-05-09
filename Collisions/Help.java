@@ -4,6 +4,8 @@
  * V1.0
  */
 
+package Collisions;
+
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -15,9 +17,6 @@ import javax.swing.*;
 
 public class Help extends JPanel{
     //------------------PROPERTIES------------------
-    //Panel
-    //JPanel thePanel = new JPanel();
-
     //Help Image
     BufferedImage img = null;
     InputStream imageclass = null;

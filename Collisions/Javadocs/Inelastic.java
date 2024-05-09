@@ -15,6 +15,11 @@
  * @since 2024-05-09
 */
 
+package Collisions.Javadocs;
+
+import Collisions.Elastic;
+
+
 public class Inelastic extends Elastic{
     //------------------METHODS------------------
 

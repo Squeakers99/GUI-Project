@@ -4,6 +4,8 @@
  * V1.0
  */
 
+package Collisions.Javadocs;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -198,7 +200,11 @@ public class LeaderboardClass {
     }
 
     // Opens the leaderboard file for writing
-    
+    /**
+     * Opens the leaderboard file for writing
+     * @param strFileName the name of the file to write
+     * @param blnAppend whether to append to the file or not
+    */
     public LeaderboardClass(String strFileName, boolean blnAppend) {
         try {
             this.theFileWriter = new FileWriter(strFileName, blnAppend);

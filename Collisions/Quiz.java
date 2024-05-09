@@ -1,3 +1,4 @@
+package Collisions;
 /*
  * Soheil Rajabali and Jayred Robles
  * Momentum and Collisions Simulator
@@ -9,6 +10,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.*;
 import javax.swing.*;
+
+import Collisions.Javadocs.LeaderboardClass;
 
 /**
  * Class created to manage the quiz screen
