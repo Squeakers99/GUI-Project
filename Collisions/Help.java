@@ -79,6 +79,5 @@ public class Help extends JPanel{
 
         //Repaints the panel to show the image
         this.repaint();
-        System.out.println("Repainted");
     }
 }

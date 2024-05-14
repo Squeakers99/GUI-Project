@@ -376,6 +376,11 @@ public class Elastic extends JPanel implements ActionListener, ChangeListener {
         if(intM1X <= 240){
             intM1X = 0 - intM1Size;
         }
+
+        //Puts M2 out of the screen if it gets on the configuration side of the panel
+        if(intM2X <= 240){
+            intM2X = 0 - intM2Size;
+        }
         
         repaint();
     }
